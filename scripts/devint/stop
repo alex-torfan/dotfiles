@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+set -o pipefail
+
+source "$DOTLY_PATH/scripts/core/_main.sh"
+
+##? Stops devint environment
+##?
+##? Usage:
+##?    stop
+docs::parse "$@"
+
+/bin/bash -c "${DEVINT_HOME}/stop.sh"

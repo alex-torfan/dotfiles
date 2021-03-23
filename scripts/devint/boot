@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+set -o pipefail
+
+source "$DOTLY_PATH/scripts/core/_main.sh"
+
+##? Stops if started and start devint for an specific suite in an specific level
+##?
+##? Usage:
+##?    boot <suite> <level>
+docs::parse "$@"
+
+if args::has_no_args "$@"; then
+  fzf_prompt "$(dot::list_scripts_path)"
+elif args::total_is 1 "$@"; then
+  fzf_prompt "$(dot::list_scripts_path | grep "/$1/")"
+else
+  suite="$1"
+  level="$2"
+fi
+
+/bin/bash -c "${DEVINT_HOME}/restart.sh -s $suite -e dev --external-config-mode=api --api-config-env=local --em-enabled=true -l $level"
