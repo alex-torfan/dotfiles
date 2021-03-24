@@ -1,0 +1,9 @@
+<templateSet group="Liquibase">
+  <template name="lbtidt" value="&lt;createTable tableName=&quot;$TABLENAME$&quot;&gt;&#10;    &lt;column name=&quot;$TABLENAME$Id&quot; type=&quot;INT&quot; autoIncrement=&quot;true&quot;&gt;&#10;        &lt;constraints primaryKey=&quot;true&quot; primaryKeyName=&quot;PK_$UTABLENAME$&quot;/&gt;&#10;    &lt;/column&gt;&#10;    &#10;    $END$&#10;&lt;/createTable&gt;" description="Create Liquibase INT id Table" toReformat="true" toShortenFQNames="true">
+    <variable name="TABLENAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="UTABLENAME" expression="groovyScript(&quot;_1.toUpperCase()&quot;, TABLENAME)" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+</templateSet>

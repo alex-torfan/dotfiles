@@ -1,0 +1,46 @@
+<templateSet group="other">
+  <template name="test" value="@Test&#10;public void Given$GIVEN$_When$WHEN$_Then$THEN$() throws Throwable {&#10;&#9;// Given&#10;&#9;$END$&#10;&#10;&#9;// When&#10;&#10;&#9;// Then&#10;&#9;Assert.assertThat();&#10;}" description="Creates a Test method" toReformat="true" toShortenFQNames="true" useStaticImport="true">
+    <variable name="GIVEN" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="WHEN" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="THEN" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_CODE" value="true" />
+    </context>
+  </template>
+  <template name="ser" value="implements Serializable " description="Implements Serializable" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="JAVA_CODE" value="true" />
+    </context>
+  </template>
+  <template name="cons" value="private static final String $CONSTANT_NAME$ = $CONSTANT_VALUE$;&#10;$END$" description="Creates String constant" toReformat="true" toShortenFQNames="true">
+    <variable name="CONSTANT_NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="CONSTANT_VALUE" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_CODE" value="true" />
+    </context>
+  </template>
+  <template name="coni" value="private static final int $CONSTANT_NAME$ = $CONSTANT_VALUE$;&#10;$END$" description="Creates int constant" toReformat="true" toShortenFQNames="true">
+    <variable name="CONSTANT_NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="CONSTANT_VALUE" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_CODE" value="true" />
+    </context>
+  </template>
+  <template name="tbef" value="@org.junit.Before&#10;public void before() throws Throwable {&#10;    $END$&#10;}" description="Creates Before Test Method" toReformat="true" toShortenFQNames="true" useStaticImport="true">
+    <context>
+      <option name="JAVA_CODE" value="true" />
+    </context>
+  </template>
+  <template name="taft" value="@org.junit.After&#10;public void after() throws Throwable {&#10;    $END$&#10;}" description="Creates After Test Method" toReformat="true" toShortenFQNames="true" useStaticImport="true">
+    <context>
+      <option name="JAVA_CODE" value="true" />
+    </context>
+  </template>
+  <template name="aw" value="&#10;@Autowired&#10;private $CLASSNAME$ $VARIABLENAME$;$END$" description="Creates Autowired attribute" toReformat="true" toShortenFQNames="true">
+    <variable name="CLASSNAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="VARIABLENAME" expression="decapitalize(CLASSNAME)" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_CODE" value="true" />
+    </context>
+  </template>
+</templateSet>

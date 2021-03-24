@@ -1,0 +1,18 @@
+<templateSet group="Red Points">
+  <template name="rpt" value="@Test&#10;public void Given$GIVEN$_When$WHEN$_Then$THEN$() throws Throwable {&#10;&#9;// Given&#10;&#9;$END$&#10;&#10;&#9;// When&#10;&#10;&#9;// Then&#10;&#9;org.junit.Assert.assertThat(new Object(), org.hamcrest.CoreMatchers.is(org.hamcrest.CoreMatchers.not(org.hamcrest.CoreMatchers.nullValue())));&#10;}" description="RedPoints: Creates a Standard Test Method" toReformat="true" toShortenFQNames="true" useStaticImport="true">
+    <variable name="GIVEN" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="WHEN" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="THEN" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_CODE" value="true" />
+    </context>
+  </template>
+  <template name="rpst" value="@ServiceTest&#10;public void Given$GIVEN$_When$WHEN$_Then$THEN$() throws Throwable {&#10;    // Given&#10;    $END$&#10;    &#10;    // When&#10;    &#10;    // Then&#10;&#9;org.junit.Assert.assertThat(new Object(), org.hamcrest.CoreMatchers.is(org.hamcrest.CoreMatchers.not(org.hamcrest.CoreMatchers.nullValue())));&#10;}" description="RedPoints: Creates a Service Test Method" toReformat="true" toShortenFQNames="true" useStaticImport="true">
+    <variable name="GIVEN" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="WHEN" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="THEN" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_CODE" value="true" />
+    </context>
+  </template>
+</templateSet>
