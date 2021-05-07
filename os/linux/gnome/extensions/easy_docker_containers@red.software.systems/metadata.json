@@ -5,9 +5,10 @@
   "shell-version": [
     "3.34",
     "3.36",
-    "3.38"
+    "3.38",
+    "40"
   ],
   "url": "https://github.com/RedSoftwareSystems/easy_docker_containers",
   "uuid": "easy_docker_containers@red.software.systems",
-  "version": 7
+  "version": 9
 }

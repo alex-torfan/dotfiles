@@ -7,7 +7,7 @@ var _originalFunction = [];
 
 var _manager;
 
-var windowCount;
+let currentLength;
 
 function windowList_init(windows, mode)
 {
@@ -16,13 +16,22 @@ function windowList_init(windows, mode)
     // therefore, we can use that for sorting
     let monitor = windows[0].get_monitor();
 
-    let windowsCurrent = windows.filter(window => window.get_workspace() == workspace).filter(window => window.get_monitor() == monitor).concat(windows.filter(window => window.get_workspace() == workspace).filter(window => window.get_monitor() != monitor));
-    let windowsOther = windows.filter(window => window.get_workspace() != workspace);
+    let current = windows.filter(window => window.get_workspace() == workspace).filter(window => window.get_monitor() == monitor).concat(windows.filter(window => window.get_workspace() == workspace).filter(window => window.get_monitor() != monitor));
 
-    windowCount = windowsCurrent.length;
+    currentLength = current.length;
 
-    // pass the new lists to the original function
-    _originalFunction['windowList_init'].apply(this, [windowsCurrent.concat(windowsOther), mode]);
+    // this line keeps the z-order of windows from other workspaces
+    current = current.concat(windows.filter(window => window.get_workspace() != workspace));
+
+    // ... whereas these lines reorder the other windows according to workspace
+    // thus losing the z-order
+//    let active = _manager.get_active_workspace_index();
+//    for (let i = 0; i < _manager.n_workspaces; i++)
+//        if (i != active)
+//            current = current.concat(windows.filter(window => window.get_workspace() == _manager.get_workspace_by_index(i)));
+
+    // pass the new list to the original function
+    _originalFunction['windowList_init'].apply(this, [current, mode]);
 }
 
 function windowList_highlight(index, justOutline)
@@ -30,8 +39,8 @@ function windowList_highlight(index, justOutline)
     _originalFunction['windowList_highlight'].apply(this, [index, justOutline]);
 
     // the old style needs to be removed before applying another one
-    this._label.remove_style_class_name(index < windowCount ? 'label-app-other' : 'label-app-current');
-    this._label.add_style_class_name(index < windowCount ? 'label-app-current' : 'label-app-other');
+    this._label.remove_style_class_name(index < currentLength ? 'label-app-other' : 'label-app-current');
+    this._label.add_style_class_name(index < currentLength ? 'label-app-current' : 'label-app-other');
 }
 
 function windowSwitcherPopup_getWindowList()
