@@ -4,4 +4,4 @@ export DOTLY_THEME="codely"
 export ZIM_HOME="$DOTLY_PATH/modules/zimfw"
 
 export IDEA_PROJS="$HOME/IdeaProjects"
-export DEVINT_HOME="$IDEA_PROJS/devint-environment"
+export DEVINT_HOME="$IDEA_PROJS/redpoints/devint-environment"
