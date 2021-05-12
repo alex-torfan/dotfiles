@@ -8,6 +8,9 @@ source "$DOTLY_PATH/scripts/core/_main.sh"
 ##?
 ##? Usage:
 ##?    boot <suite> <level>
+##?
+##? Examples:
+##?   boot ipr 5
 docs::parse "$@"
 
 if args::has_no_args "$@"; then
