@@ -4,11 +4,11 @@ set -euo pipefail
 
 source "$DOTLY_PATH/scripts/core/_main.sh"
 
-##? Connects to a running docker instance
+##? Asks for an operation to perform on a running docker instance
 #?? 1.0.0
 ##?
 ##? Usage:
-##?   connect
+##?   opt
 docs::parse "$@"
 
 if docker ps >/dev/null 2>&1; then
@@ -16,8 +16,9 @@ if docker ps >/dev/null 2>&1; then
 
   if [[ -n $container ]]; then
     container_id=$(echo $container | awk -F ': ' '{print $1}')
+    opt=$(echo -e "restart\nstop\nlogs -f" | awk -F '\n' '{print $(NF)}' | fzf --height 40%)
 
-    docker exec -it $container_id /bin/bash || docker exec -it $container_id /bin/sh
+    docker $opt $container_id
   else
     echo "You haven't selected any container! ༼つ◕_◕༽つ"
   fi

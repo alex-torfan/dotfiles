@@ -6,16 +6,17 @@ const Keymap = imports.gi.Gdk.Keymap;
 const Gio = imports.gi.Gio;
 const Me = imports.misc.extensionUtils.getCurrentExtension();
 const Config = imports.misc.config;
+const [VersionMajor, VersionMinor] = Config.PACKAGE_VERSION.split('.');
+const Version = parseInt(VersionMajor) == 3 ? parseInt(VersionMinor) : parseInt(VersionMajor);
 const GLib = imports.gi.GLib;
 
-let _version;
 let _x11;
 
 let indicator;
 
 function getKeymap()
 {
-    if (_version > 36 && !_x11)
+    if (Version > 36 && !_x11)
         return Clutter.get_default_backend().get_default_seat().get_keymap();
 
     return Keymap.get_default();
@@ -34,14 +35,12 @@ function updateState()
 
 function init()
 {
-    _version = parseInt(Config.PACKAGE_VERSION.split('.')[1]);
-
     _x11 = GLib.getenv('XDG_SESSION_TYPE') == 'x11';
 }
 
 function enable()
 {
-    indicator = new PanelMenu.Button(this, St.Align.START);
+    indicator = new PanelMenu.Button();
 
     indicator.numIcon = new St.Icon({ gicon: Gio.icon_new_for_string(Me.path + '/numlock-symbolic.svg'), style_class: 'system-status-icon icon-style' });
     indicator.capsIcon = new St.Icon({ gicon: Gio.icon_new_for_string(Me.path + '/capslock-symbolic.svg'), style_class: 'system-status-icon icon-style' });
